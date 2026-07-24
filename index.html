@@ -34,6 +34,7 @@
 .theme-amud    {--f-base:'Cairo',sans-serif;--f-title:'Amiri',serif;--f-num:'Amiri',serif;--accent:#111;--paper:#faf8f4;--divider:#dedad2;--badge-bg:#efece6;--num-color:#111;--ink-3:#888;--grain:.035;--r-card:0px}
 .theme-khatm   {--f-base:'Tajawal',sans-serif;--f-title:'Amiri',serif;--f-num:'Amiri',serif;--accent:#7a2b38;--paper:#faf6ee;--divider:rgba(122,43,56,.22);--badge-bg:#f3e9e2;--num-color:#7a2b38;--ink-3:#8a7468;--grain:.036;--r-card:0px}
 .theme-fihris  {--f-base:'Readex Pro',sans-serif;--f-title:'Cormorant Garamond',serif;--f-num:'Cormorant Garamond',serif;--accent:#26415c;--paper:#ffffff;--divider:#e4e2dd;--badge-bg:transparent;--num-color:#26415c;--ink-3:#9a9690;--grain:.018;--r-card:0px}
+.theme-qindeel {--f-base:'Tajawal',sans-serif;--f-title:'Amiri',serif;--f-num:'Amiri',serif;--accent:#c9973f;--paper:#1e1a15;--divider:rgba(201,151,63,.16);--num-color:rgba(201,151,63,.45);--badge-bg:#2a2318;--ink:#ece4d3;--ink-2:#c9bfa9;--ink-3:#8f8674;--grain:.045;--r-card:0px}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
@@ -57,6 +58,7 @@ body.theme-mistara {background:#c4cad2}
 body.theme-amud    {background:#d4d0c8}
 body.theme-khatm   {background:#dccbb8}
 body.theme-fihris  {background:#c9cdd2}
+body.theme-qindeel{background:radial-gradient(ellipse at 50% 22%,#2b2419 0%,#100e0b 72%)}
 
 .toolbar{
   position:sticky;top:0;z-index:200;min-height:52px;
@@ -459,7 +461,28 @@ body.previewing .save-dot{display:none}
 .theme-fihris .e-sub{color:var(--ink-3);font-style:italic;position:relative;z-index:1}
 .theme-fihris .doc-header{border-bottom:1px solid var(--divider)}
 
+.theme-qindeel .doc{box-shadow:0 0 0 .5px rgba(201,151,63,.16),0 1px 0 rgba(255,255,255,.03) inset,0 10px 34px rgba(0,0,0,.5),0 0 110px rgba(201,151,63,.07)}
+.theme-qindeel .doc::after{background:linear-gradient(180deg,rgba(201,151,63,.1) 0%,rgba(201,151,63,.02) 55%,transparent 100%)}
+.theme-qindeel .group{display:grid;grid-template-columns:54px 1fr;gap:0 20px;margin-bottom:9mm}
+.theme-qindeel .g-num{display:flex;align-items:center;justify-content:center;width:38px;height:38px;margin-top:3px;border-radius:50%;position:relative;cursor:grab;user-select:none;transition:transform .2s}
+.theme-qindeel .g-num::before{content:counter(grp);font-family:var(--f-num);font-size:1.1rem;font-weight:600;color:var(--accent);position:relative;z-index:1}
+.theme-qindeel .g-num::after{content:'';position:absolute;inset:-8px;border-radius:50%;background:radial-gradient(circle,rgba(201,151,63,.3) 0%,rgba(201,151,63,0) 70%);opacity:.55;transition:opacity .25s,transform .25s}
+.theme-qindeel .g-num:hover{transform:scale(1.05)}
+.theme-qindeel .g-num:hover::after{opacity:1;transform:scale(1.2)}
+.theme-qindeel .g-num:active{cursor:grabbing}
+.theme-qindeel .g-body{border-inline-start:1px solid var(--divider);padding-inline-start:20px}
+.theme-qindeel .entry{display:grid;grid-template-columns:44px 1fr 68px auto;align-items:center;column-gap:var(--entry-gap);padding:9px 0;border-bottom:1px solid var(--divider);transition:background .12s}
+.theme-qindeel .entry:hover{background:rgba(201,151,63,.055)}
+.theme-qindeel .entry.search-hit{background:rgba(201,151,63,.11)}
+.theme-qindeel .in-cls{border-radius:3px;border:1px solid rgba(201,151,63,.34);background:var(--badge-bg);color:var(--accent)}
+.theme-qindeel .e-sub{color:var(--ink-3)}
+.theme-qindeel .doc-header{border-bottom-color:var(--divider)}
+.theme-qindeel .btn-note:hover{color:#e3c98c}
+.theme-qindeel .btn-ae:hover{color:#e3c98c}
+body.theme-qindeel ::selection{background:rgba(201,151,63,.32);color:#1e1a15}
+
 .entry.search-hit .in-name,.entry.search-hit .in-cls{color:var(--ink)!important}
+.entry.dup-hit .in-name{border-bottom-style:dashed;border-bottom-color:#c2410c}
 
 .sub-row{grid-column:1/-1;padding-inline-start:44px;margin-top:-2px;padding-bottom:6px;overflow:hidden;animation:subIn .16s cubic-bezier(.22,1,.36,1)}
 @keyframes subIn{from{opacity:0;max-height:0}to{opacity:1;max-height:30px}}
@@ -536,7 +559,7 @@ body.previewing .save-dot{display:none}
 
 .theme-thread .btn-dg,.theme-ai .btn-dg,.theme-diwan .btn-dg,
 .theme-stitch .btn-dg,.theme-node .btn-dg,.theme-waraq .btn-dg,
-.theme-amud .btn-dg,.theme-dusk .btn-dg,.theme-khatm .btn-dg{inset-inline-end:-28px;top:6px}
+.theme-amud .btn-dg,.theme-dusk .btn-dg,.theme-khatm .btn-dg,.theme-qindeel .btn-dg{inset-inline-end:-28px;top:6px}
 .theme-apple .btn-dg,.theme-material .btn-dg,.theme-fluent .btn-dg,
 .theme-sijill .btn-dg{inset-inline-end:auto;inset-inline-start:38px;top:9px}
 .theme-glass .btn-dg{inset-inline-end:-28px;top:8px}
@@ -623,6 +646,9 @@ body.previewing .save-dot{display:none}
   .theme-khatm .g-num{border-color:#000!important}
   .theme-khatm .g-num::after{border-color:#000!important}
   .theme-fihris .entry::before{border-bottom-color:#999!important}
+.theme-qindeel .doc,body.theme-qindeel{background:#fff!important}
+.theme-qindeel .g-num::before{color:#000!important}
+.theme-qindeel .g-num::after{display:none!important}
   .theme-fihris .in-name,.theme-fihris .in-cls{background:#fff!important}
   .theme-apple .group,.theme-material .group,.theme-fluent .group,.theme-sijill .group{transform:none!important;box-shadow:none!important;outline:none!important;border-color:#bbb!important}
   .theme-apple .g-num::before,.theme-material .g-num::before,.theme-fluent .g-num::before,.theme-sijill .g-num::before{border-color:#000!important;color:#000!important}
@@ -682,6 +708,7 @@ body.previewing .save-dot{display:none}
       <button class="drop-item" data-theme="theme-amud"     onclick="setTheme('theme-amud')"     data-i18n="tAmud">عَمُود</button>
       <button class="drop-item" data-theme="theme-khatm"    onclick="setTheme('theme-khatm')"    data-i18n="tKhatm">خَتْم</button>
       <button class="drop-item" data-theme="theme-fihris"   onclick="setTheme('theme-fihris')"   data-i18n="tFihris">فِهرِس</button>
+      <button class="drop-item" data-theme="theme-qindeel" onclick="setTheme('theme-qindeel')" data-i18n="tQindeel">قنديل</button>
     </div>
   </div>
   <div class="tb-sep"></div>
@@ -707,7 +734,7 @@ body.previewing .save-dot{display:none}
     <div class="dropdown-menu" id="hist-menu"></div>
   </div>
   <div class="tb-sep"></div>
-  <button class="btn" onclick="toggleFreezeHeader()" id="btn-freeze" data-i18n="freezeHeader">تثبيت الترويسة</button>
+  <button class="btn" onclick="toggleFreezeHeader()" id="btn-freeze" data-i18n="freezeHeader">تثبيت العنوان</button>
   <div class="tb-sep"></div>
   <button class="btn"         onclick="resetAll()"    data-i18n="clear">إفراغ</button>
   <button class="btn btn-primary" onclick="window.print()" data-i18n="print">طباعة</button>
@@ -741,15 +768,15 @@ const i18n={
     docTitle:'عنوان الكشف',namePh:'الاسم الكامل',clsPh:'الفصل',notePh:'ملاحظة',total:'المجموع: ',groups:'المجموعات: ',
     addName:'+ إضافة اسم',addNote:'+ إضافة ملاحظة',
     cmdTitle:'إضافة أو حذف مجموعات متعددة (+3, -2)',
-    entriesCount:'عدد الأسماء: ',delGrpBtn:'حذف المجموعة',delEntryBtn:'حذف الاسم',
+    entriesCount:'عدد الأسماء: ',delGrpBtn:'حذف المجموعة',delEntryBtn:'حذف الاسم',dupName:'اسم مكرر — يتكرر في القائمة',
     undo:'تراجع',
     toastEntry:'تم حذف الاسم',toastGroup:'تم حذف المجموعة',toastGroups:'تم حذف المجموعات',toastClear:'تم إفراغ الكشف',
-    freezeHeader:'تثبيت الترويسة',history:'السجل ▾',histNoTitle:'بدون عنوان',histEmpty:'لا يوجد سجل بعد',histNow:'الآن',
+    freezeHeader:'تثبيت العنوان',history:'السجل ▾',histNoTitle:'بدون عنوان',histEmpty:'لا يوجد سجل بعد',histNow:'الآن',
     pbCancel:'إلغاء',pbApply:'استعادة هذه النسخة',previewing:'معاينة',
     tThread:'خيوط',tAi:'أنيق',tStitch:'تطريز',tNode:'عُقد',
     tApple:'آبل',tMaterial:'ماتيريال',tFluent:'فلوينت',
     tDiwan:'ديوان',tSijill:'سجلّ',tDusk:'غسق',tGlass:'زجاج',
-    tWaraq:'وَرَق',tMistara:'مِسطَرة',tAmud:'عَمُود',tKhatm:'خَتْم',tFihris:'فِهرِس'
+    tWaraq:'وَرَق',tMistara:'مِسطَرة',tAmud:'عَمُود',tKhatm:'خَتْم',tFihris:'فِهرِس',tQindeel:'قنديل'
   },
   en:{
     appTitle:'Register',theme:'Theme ▾',addG:'+ Group',rmG:'− Group',
@@ -757,7 +784,7 @@ const i18n={
     docTitle:'Document Title',namePh:'Full Name',clsPh:'Class',notePh:'Note',total:'Total: ',groups:'Groups: ',
     addName:'+ Name',addNote:'+ Note',
     cmdTitle:'Add or remove multiple groups (+3, -2)',
-    entriesCount:'Names: ',delGrpBtn:'Delete group',delEntryBtn:'Delete name',
+    entriesCount:'Names: ',delGrpBtn:'Delete group',delEntryBtn:'Delete name',dupName:'Duplicate name — appears more than once',
     undo:'Undo',
     toastEntry:'Name deleted',toastGroup:'Group deleted',toastGroups:'Groups deleted',toastClear:'Register cleared',
     freezeHeader:'Freeze header',history:'History ▾',histNoTitle:'Untitled',histEmpty:'No history yet',histNow:'Just now',
@@ -765,7 +792,7 @@ const i18n={
     tThread:'Thread',tAi:'Sleek',tStitch:'Stitch',tNode:'Nodes',
     tApple:'Apple',tMaterial:'Material',tFluent:'Fluent',
     tDiwan:'Diwan',tSijill:'Sijill',tDusk:'Dusk',tGlass:'Glass',
-    tWaraq:'Paper',tMistara:'Ruled',tAmud:'Column',tKhatm:'Seal',tFihris:'Index'
+    tWaraq:'Paper',tMistara:'Ruled',tAmud:'Column',tKhatm:'Seal',tFihris:'Index',tQindeel:'Lantern'
   }
 };
 
@@ -991,6 +1018,24 @@ function tick(src){
   document.getElementById('ft-groups').textContent=g?d.groups+g:'';
 }
 
+function markDuplicates(src){
+  const counts={};
+  src.groups.forEach(g=>g.entries.forEach(e=>{
+    const key=(e.name||'').trim().toLowerCase();
+    if(key)counts[key]=(counts[key]||0)+1;
+  }));
+  const d=i18n[state.lang];
+  src.groups.forEach(g=>g.entries.forEach(e=>{
+    const key=(e.name||'').trim().toLowerCase();
+    const isDup=!!key&&counts[key]>1;
+    const div=document.querySelector(`.entry[data-eid="${e.id}"]`);
+    if(!div)return;
+    div.classList.toggle('dup-hit',isDup);
+    const inN=div.querySelector('.in-name');
+    if(inN)inN.title=isDup?d.dupName:'';
+  }));
+}
+
 function render(){
   const app=document.getElementById('app');
   const titleEl=document.getElementById('doc-title');
@@ -1031,6 +1076,7 @@ function render(){
   tick(src);
   const search=document.getElementById('search-in').value;
   if(!previewing&&search)fuzzySearch(search);
+  markDuplicates(src);
 }
 
 function renderPreviewBar(){
@@ -1069,7 +1115,7 @@ function renderEntry(e,d,previewing){
   inN.className='in-name';inN.type='text';inN.placeholder=d.namePh;
   inN.dir=state.lang==='ar'?'rtl':'ltr';
   inN.value=e.name;inN.draggable=false;inN.readOnly=!!previewing;
-  inN.oninput=()=>{e.name=inN.value;save()};
+  inN.oninput=()=>{e.name=inN.value;save();markDuplicates(state)};
   const inC=document.createElement('input');
   inC.className='in-cls';inC.type='text';inC.placeholder=d.clsPh;
   inC.dir='ltr';inC.value=e.cls;inC.draggable=false;inC.readOnly=!!previewing;
